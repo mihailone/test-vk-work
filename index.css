@@ -1,0 +1,200 @@
+@import 'reset.css';
+
+:root {
+    --start-bg-image-url: url('/src/minesweeper-sprites_9TPZzv3.png');
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    flex-direction: column;
+    max-width: 360px;
+    margin: 0 auto;
+}
+
+header {
+    border: solid 6px #c6c6c6;
+    border-right-color: #808080;
+    border-top-color: #ffffff;
+    border-bottom-color: #c6c6c6;
+    border-left-color: #ffffff;
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: space-between;
+    background-color: #c0c0c0;
+}
+
+main {
+    border: solid 6px #c6c6c6;
+    border-right-color: #808080;
+    border-top-color: #c6c6c6;
+    border-bottom-color: #808080;
+    border-left-color: #ffffff;
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: space-between;
+    background-color: #c0c0c0;
+}
+
+.header__wrapper {
+    border: solid 6px;
+    border-top-color: #808080;
+    border-left-color: #808080;
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.game__wrapper {
+    border: solid 6px;
+    border-top-color: #808080;
+    border-left-color: #808080;
+    width: 100%;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.game-block {
+    text-align: center;
+    width: 18px;
+    height: 18px;
+}
+
+/*image for data attribute*/
+div[data-status="open"] {
+    background-image: var(--start-bg-image-url);
+    background-repeat: no-repeat;
+    background-position: -16px -50px;
+}
+
+div[data-status="closed"] {
+    background-image: var(--start-bg-image-url);
+    background-repeat: no-repeat;
+    background-position: 1px -50px;
+}
+
+div[data-status="flag"] {
+    background-image: var(--start-bg-image-url);
+    background-repeat: no-repeat;
+    background-position: -33px -50px;
+}
+
+div[data-status="question"] {
+    background-image: var(--start-bg-image-url);
+    background-repeat: no-repeat;
+    background-position: -50px -50px;
+}
+
+div[data-status="bomb-boom"] {
+    background-image: var(--start-bg-image-url);
+    background-repeat: no-repeat;
+    background-position: -101px -50px;
+}
+
+div[data-status="bomb-all"] {
+    background-image: var(--start-bg-image-url);
+    background-repeat: no-repeat;
+    background-position: -84px -50px;
+}
+
+div[data-status="bomb-found"] {
+    background-image: var(--start-bg-image-url);
+    background-repeat: no-repeat;
+    background-position: -118px -50px;
+}
+
+.counter {
+    display: flex;
+}
+
+.status__game {
+    background-image: var(--start-bg-image-url);
+    width: 25.9px;
+    height: 26px;
+    background-repeat: no-repeat;
+}
+
+div[data-game-status="start"] {
+    background-position: -1px -25px;
+}
+
+div[data-game-status="started"] {
+    background-position: -27px -24px;
+}
+
+div[data-game-status="click"] {
+    background-position: -54px -24px;
+}
+
+div[data-game-status="end-game"] {
+    background-position: -108px -25px;
+}
+
+.game__score {
+    background-image: var(--start-bg-image-url);
+    width: 12.9px;
+    height: 23px;
+    background-repeat: no-repeat;
+}
+
+.timer {
+    display: flex;
+}
+
+.timer__wrapper {
+    background-image: var(--start-bg-image-url);
+    width: 12.9px;
+    height: 23px;
+    background-repeat: no-repeat;
+}
+
+[data-time-number="0"] {
+    background-position: -125.8px 0px;
+}
+
+div[data-time-number="1"] {
+    background-position: 0px 0px;
+}
+
+div[data-time-number="2"] {
+    background-position: -14px 0px;
+}
+
+div[data-time-number="3"] {
+    background-position: -28px 0px;
+}
+
+div[data-time-number="4"] {
+    background-position: -42px 0px;
+}
+
+div[data-time-number="5"] {
+    background-position: -56px 0px;
+}
+
+div[data-time-number="6"] {
+    background-position: -70px 0px;
+}
+
+div[data-time-number="7"] {
+    background-position: -84px 0px;
+}
+
+div[data-time-number="8"] {
+    background-position: -98px 0px;
+}
+
+div[data-time-number="9"] {
+    background-position: -112px 0px;
+}
