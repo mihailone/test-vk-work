@@ -1,7 +1,7 @@
 @import 'reset.css';
 
 :root {
-    --start-bg-image-url: url('/src/minesweeper-sprites_9TPZzv3.png');
+    --start-bg-image-url: url('./src/minesweeper-sprites_9TPZzv3.png');
 }
 
 .container {
