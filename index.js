@@ -17,8 +17,10 @@ let gameScore = 40;
 let one = 0;
 const gamePull = [];
 let time = 0;
+let timerStatus = false;
 
 function renderАields() {
+    gameWrapper.innerHTML = ''
     const result = [];
     for (let i = 0; i < (16 * 16); i++) {
         let randomKey = Math.floor(Math.random() * (1 - 0 + 1)) + 0;
@@ -43,18 +45,22 @@ function addEvenClick(elements, arr) {
             if (gameStatus === false) {
                 timerStart();
             }
-            if (e.which == 1 && elements[i].dataset.status === 'closed' && gameStatus === true) {
+            if (e.which == 1 && elements[i].dataset.status === 'closed') {
                 elements[i].dataset.status = 'open';
                 statusGame.dataset.gameStatus = 'click';
-
                 for (let j = 0; j < gamePull.length; j++) {
                     if (j === i && gamePull[j] === 1) {
                         elements[i].dataset.status = 'bomb-boom';
                         stopGame();
-                        gameStatus === false
+                        gameStatus = false
+                    }
+                    if (j === i && gamePull[j] === 0) {
+                        let line = Math.floor(j / (16 * 16) * 16);
+                        console.log(line, arr[line]);
                     }
                 }
-            } else if (e.which == 3) {
+            }
+            if (e.which == 3) {
                 if (elements[i].dataset.status === 'closed') {
                     elements[i].dataset.status = 'flag';
                     gameScore--;
@@ -66,7 +72,8 @@ function addEvenClick(elements, arr) {
                 }
                 renderScore();
             }
-        })
+        });
+
         elements[i].addEventListener('mouseup', (e) => {
             if (statusGame.dataset.gameStatus === 'click' && gameStatus === true) {
                 statusGame.dataset.gameStatus = 'start';
@@ -84,6 +91,7 @@ function addEvenClick(elements, arr) {
 
             }
         })
+
     })
 }
 
@@ -93,11 +101,13 @@ function startGame() {
 
 function stopGame() {
     gameStatus = false;
+    timerStatus = false;
     statusGame.dataset.gameStatus = 'end-game';
 }
 
 function timerStart() {
     gameStatus = true;
+    timerStatus = true;
     const upTime = setInterval(function () {
         const timeArr = time.toString().split('');
         timeArr.forEach((item, i) => {
@@ -124,10 +134,13 @@ function renderScore() {
 }
 
 statusGame.addEventListener('click', (e) => {
+    statusGame.dataset.gameStatus = 'start';
+    gameStatus = false
     time = 0;
     gameScore = 40;
     renderScore();
     gameWrapper.innerHTML = '';
     renderАields();
     one = 0;
+    timer.innerHTML = `<div class="timer__wrapper" data-time-number="0"></div><div class="timer__wrapper" data-time-number="0"></div><div class="timer__wrapper" data-time-number="0"></div>`;
 });
